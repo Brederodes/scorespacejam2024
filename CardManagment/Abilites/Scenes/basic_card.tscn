@@ -10,7 +10,7 @@ use_button = NodePath("use")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_lfvmm")
-hframes = 5
+hframes = 8
 
 [node name="use" type="Button" parent="."]
 offset_left = -16.0

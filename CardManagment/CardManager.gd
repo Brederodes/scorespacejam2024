@@ -1,20 +1,26 @@
 class_name CardManager extends Node2D
 
 
-enum ABILITY_TYPES {JUMP, DASH, GRAPPLE, GRAVITY, WATER};
+enum ABILITY_TYPES {JUMP, DASH, PORTAL, GRAPPLE, CARPET, SHIELD, GRAVITY, WATER};
 #4 = Common, 2 = Uncommon, 1 = Rare
 var Probability:Dictionary = {ABILITY_TYPES.JUMP : 4,
 							  ABILITY_TYPES.DASH : 4,
+							  ABILITY_TYPES.PORTAL : 4,
 							  ABILITY_TYPES.GRAPPLE : 2,
+							  ABILITY_TYPES.CARPET : 2,
+							  ABILITY_TYPES.SHIELD : 2,
 							  ABILITY_TYPES.GRAVITY : 1,
 							  ABILITY_TYPES.WATER : 1}
-							#Total = 12 pls update if changing rarites
-var TotalWeight:int = 12;
-var JumpCardScene = load("res://CardManagment/Abilites/jump_card.tscn")
-var DashCardScene = load("res://CardManagment/Abilites/dash_card.tscn")
-var GrappleCardScene = load("res://CardManagment/Abilites/grapple_card.tscn")
-var GravityCardScene = load("res://CardManagment/Abilites/gravity_card.tscn")
-var WaterCardScene = load("res://CardManagment/Abilites/water_card.tscn")
+							#Total = 20 pls update if changing rarites
+var TotalWeight:int = 20;
+var JumpCardScene = load("res://CardManagment/Abilites/Scenes/jump_card.tscn")
+var DashCardScene = load("res://CardManagment/Abilites/Scenes/dash_card.tscn")
+var PortalCardScene = load("res://CardManagment/Abilites/Scenes/portal_card.tscn")
+var GrappleCardScene = load("res://CardManagment/Abilites/Scenes/grapple_card.tscn")
+var CarpetCardScene = load("res://CardManagment/Abilites/Scenes/carpet_card.tscn")
+var ShieldCardScene = load("res://CardManagment/Abilites/Scenes/shield_card.tscn")
+var GravityCardScene = load("res://CardManagment/Abilites/Scenes/gravity_card.tscn")
+var WaterCardScene = load("res://CardManagment/Abilites/Scenes/water_card.tscn")
 
 var Cooldown:float = 0; #start testing at 0
 
@@ -46,14 +52,20 @@ func Random_Ability() -> int:
 	
 func Create_Random_Card()-> Card:
 	var newCard_Ability:int = Random_Ability();
-	var newCard;
+	var newCard : Card;
 	match newCard_Ability:
 		ABILITY_TYPES.JUMP:
 			newCard = JumpCardScene.instantiate();
 		ABILITY_TYPES.DASH:
 			newCard = DashCardScene.instantiate();
+		ABILITY_TYPES.PORTAL:
+			newCard = PortalCardScene.instantiate();
 		ABILITY_TYPES.GRAPPLE:
 			newCard = GrappleCardScene.instantiate();
+		ABILITY_TYPES.CARPET:
+			newCard = CarpetCardScene.instantiate();
+		ABILITY_TYPES.SHIELD:
+			newCard = ShieldCardScene.instantiate();
 		ABILITY_TYPES.GRAVITY:
 			newCard = GravityCardScene.instantiate();
 		ABILITY_TYPES.WATER:

@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://balv4hl3wpggc"]
-
-[ext_resource type="PackedScene" uid="uid://dwtb7wj68k41l" path="res://CardManagment/Abilites/basic_card.tscn" id="1_0v87b"]
-[ext_resource type="Script" path="res://CardManagment/Abilites/JumpCard.gd" id="1_jivlm"]
-
-[node name="JumpCard" instance=ExtResource("1_0v87b")]
-script = ExtResource("1_jivlm")

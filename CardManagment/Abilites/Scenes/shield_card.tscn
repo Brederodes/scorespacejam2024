@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://0glmot6c0rsx"]
+
+[ext_resource type="PackedScene" uid="uid://dwtb7wj68k41l" path="res://CardManagment/Abilites/Scenes/basic_card.tscn" id="1_lo0i0"]
+[ext_resource type="Script" path="res://CardManagment/Abilites/Scripts/ShieldCard.gd" id="2_d3qpj"]
+
+[node name="ShieldCard" instance=ExtResource("1_lo0i0")]
+script = ExtResource("2_d3qpj")
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 5
