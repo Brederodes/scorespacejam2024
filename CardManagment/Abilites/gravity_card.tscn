@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7am1jq08kxr2"]
+
+[ext_resource type="Script" path="res://CardManagment/Abilites/GravityCard.gd" id="1_3mf7h"]
+
+[node name="GravityCard"]
+script = ExtResource("1_3mf7h")
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 3

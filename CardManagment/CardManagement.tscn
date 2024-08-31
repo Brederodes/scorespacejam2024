@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://eh5xxlgnxq22"]
 
-[ext_resource type="PackedScene" uid="uid://balv4hl3wpggc" path="res://CardManagment/Abilites/Scenes/jump_card.tscn" id="2_pyr5s"]
-[ext_resource type="PackedScene" uid="uid://bimakjytylosn" path="res://CardManagment/Abilites/Scenes/dash_card.tscn" id="3_7lpth"]
+[ext_resource type="PackedScene" uid="uid://bimakjytylosn" path="res://CardManagment/Abilites/Scenes/dash_card.tscn" id="2_lybkh"]
+[ext_resource type="PackedScene" uid="uid://c3kxhtivhw8ti" path="res://CardManagment/Abilites/Scenes/gravity_card.tscn" id="3_aq72u"]
 [ext_resource type="Script" path="res://CardManagment/CardManager.gd" id="3_fmray"]
-[ext_resource type="PackedScene" uid="uid://c3kxhtivhw8ti" path="res://CardManagment/Abilites/Scenes/gravity_card.tscn" id="5_h8lhh"]
+[ext_resource type="PackedScene" uid="uid://balv4hl3wpggc" path="res://CardManagment/Abilites/Scenes/jump_card.tscn" id="4_3sgy3"]
 
 [sub_resource type="GDScript" id="GDScript_wvbjg"]
 
@@ -20,13 +20,12 @@ script = ExtResource("3_fmray")
 [node name="Timer" type="Timer" parent="CardManager"]
 one_shot = true
 
-[node name="DashCard" parent="CardManager" instance=ExtResource("3_7lpth")]
-position = Vector2(-33, 0)
+[node name="DashCard" parent="CardManager" instance=ExtResource("2_lybkh")]
+position = Vector2(-38, -1)
 
-[node name="JumpCard" parent="CardManager" instance=ExtResource("2_pyr5s")]
-position = Vector2(-1, 0)
+[node name="GravityCard" parent="CardManager" instance=ExtResource("3_aq72u")]
 Slot = 1
 
-[node name="GravityCard" parent="CardManager" instance=ExtResource("5_h8lhh")]
-position = Vector2(31, 0)
+[node name="JumpCard" parent="CardManager" instance=ExtResource("4_3sgy3")]
+position = Vector2(35, 0)
 Slot = 2

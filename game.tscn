@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://eh5xxlgnxq22" path="res://CardManagment/CardManagement.tscn" id="8_mw6b0"]
 [ext_resource type="PackedScene" uid="uid://4w5yvx4ellns" path="res://misc/dragon.tscn" id="8_t8dht"]
 [ext_resource type="PackedScene" uid="uid://by6nxyk8lj1cg" path="res://misc/coin.tscn" id="9_iru60"]
-[ext_resource type="PackedScene" uid="uid://comu3cm1obf6o" path="res://misc/lava.tscn" id="10_henic"]
-[ext_resource type="PackedScene" uid="uid://c3gh54igvudkb" path="res://misc/estalactite.tscn" id="11_8ydhm"]
+[ext_resource type="PackedScene" path="res://misc/lava.tscn" id="10_henic"]
+[ext_resource type="PackedScene" path="res://misc/estalactite.tscn" id="11_8ydhm"]
 [ext_resource type="PackedScene" uid="uid://c0hwvxkx61qje" path="res://misc/background.tscn" id="11_eg2vw"]
 
 [node name="Game" type="Node2D"]
@@ -23,7 +23,7 @@ zoom = Vector2(3, 3)
 [node name="Player" parent="." instance=ExtResource("1_713ts")]
 
 [node name="Platform" parent="." instance=ExtResource("1_6oq40")]
-position = Vector2(4, -19)
+position = Vector2(237, -115)
 
 [node name="Platform2" parent="." instance=ExtResource("3_50r8b")]
 position = Vector2(165, -33)
@@ -35,7 +35,7 @@ position = Vector2(84, -89)
 position = Vector2(284, -36)
 
 [node name="Platform3" parent="." instance=ExtResource("6_ramv8")]
-position = Vector2(249, -148)
+position = Vector2(-30, -15)
 
 [node name="Platform0" parent="." instance=ExtResource("7_vbdck")]
 position = Vector2(393, -68)
@@ -53,9 +53,9 @@ position = Vector2(-159, 83)
 position = Vector2(-162, -87)
 
 [node name="Control" parent="." instance=ExtResource("8_mw6b0")]
-offset_left = -104.0
-offset_top = -42.0
-offset_right = -64.0
-offset_bottom = -2.0
+offset_left = -104.61
+offset_top = -56.7704
+offset_right = -64.6096
+offset_bottom = -16.7704
 
 [node name="Background" parent="." instance=ExtResource("11_eg2vw")]

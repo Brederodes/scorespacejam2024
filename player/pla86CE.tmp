@@ -7,9 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug5ir"]
 radius = 8.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_uri4b"]
-a = Vector2(0, -9)
-b = Vector2(0, 14)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sahd"]
+radius = 8.544
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 15
@@ -42,4 +41,5 @@ collision_mask = 2
 script = ExtResource("3_3gtw3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
-shape = SubResource("SegmentShape2D_uri4b")
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_3sahd")

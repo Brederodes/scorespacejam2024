@@ -1,20 +1,22 @@
-class_name  FloorDetector extends Area2D
+extends Area2D
 
-signal left_floor;
-signal touched_floor(body : Node2D);
-
-var collidingPlatforms : Array = Array();
-func remove_ground_from_array(body : Node2D) -> void:
-	collidingPlatforms.erase(body);
-	pass
-
-func add_ground_to_array(body : Node2D) -> void:
-	var isNewFloor : bool = collidingPlatforms.is_empty();
-	collidingPlatforms.append(body);
-	if(isNewFloor):
-		emit_signal("touched_floor", body);
-	pass
+var currentTouchingFloors : Array;
+signal turned_airborne;
+signal turned_grounded;
 
 func _ready():
-	self.connect("body_entered", add_ground_to_array);
-	self.connect("body_exited", remove_ground_from_array);
+	connect("body_entered", _on_touching_floor);
+	connect("body_exited", _on_exiting_floor);
+
+func _on_exiting_floor(floor : Node2D):
+	currentTouchingFloors.erase(floor);
+	if(currentTouchingFloors.size() == 0):
+		emit_signal("turned_airborne");
+	pass
+func _on_touching_floor(floor : Node2D):
+	if(currentTouchingFloors.has(floor)):
+		return;
+	currentTouchingFloors.append(floor);
+	if(currentTouchingFloors.size() == 1):
+		emit_signal("turned_grounded");
+	pass
