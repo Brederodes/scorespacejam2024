@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 project/assembly_name="ScoreSpace31"
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Terrain"
+2d_physics/layer_3="Traps"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
