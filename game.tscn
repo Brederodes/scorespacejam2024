@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ggqvatbve8xk"]
+[gd_scene load_steps=12 format=3 uid="uid://ggqvatbve8xk"]
 
 [ext_resource type="PackedScene" uid="uid://iqvovrlv8afl" path="res://platforms/platform1.tscn" id="1_6oq40"]
 [ext_resource type="PackedScene" uid="uid://yk2n6gs5xu34" path="res://player/player.tscn" id="1_713ts"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dl28vgifk7k4d" path="res://platforms/platform5.tscn" id="5_ubnbc"]
 [ext_resource type="PackedScene" uid="uid://d4d0pr7b685hm" path="res://platforms/platform2.tscn" id="6_ramv8"]
 [ext_resource type="PackedScene" uid="uid://cms6pf668lc5" path="res://platforms/platform0.tscn" id="7_vbdck"]
+[ext_resource type="PackedScene" uid="uid://eh5xxlgnxq22" path="res://CardManagment/CardManagement.tscn" id="8_mw6b0"]
+[ext_resource type="PackedScene" uid="uid://4w5yvx4ellns" path="res://misc/dragon.tscn" id="8_t8dht"]
+[ext_resource type="PackedScene" uid="uid://by6nxyk8lj1cg" path="res://misc/coin.tscn" id="9_iru60"]
+[ext_resource type="PackedScene" uid="uid://c0hwvxkx61qje" path="res://misc/background.tscn" id="11_eg2vw"]
 
 [node name="Game" type="Node2D"]
 
@@ -32,3 +36,17 @@ position = Vector2(249, -148)
 
 [node name="Platform0" parent="." instance=ExtResource("7_vbdck")]
 position = Vector2(393, -68)
+
+[node name="Dragon" parent="." instance=ExtResource("8_t8dht")]
+position = Vector2(-176, -7)
+
+[node name="Coin" parent="." instance=ExtResource("9_iru60")]
+position = Vector2(54, 21)
+
+[node name="Control" parent="." instance=ExtResource("8_mw6b0")]
+offset_left = -53.0
+offset_top = -57.0
+offset_right = -13.0
+offset_bottom = -17.0
+
+[node name="Background" parent="." instance=ExtResource("11_eg2vw")]

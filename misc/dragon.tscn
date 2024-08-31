@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://4w5yvx4ellns"]
+
+[ext_resource type="Texture2D" uid="uid://dub5givxdbkme" path="res://assets/Dragon_Kill.png" id="1_i2wyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8ygp"]
+atlas = ExtResource("1_i2wyk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dmve"]
+atlas = ExtResource("1_i2wyk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7hxn"]
+atlas = ExtResource("1_i2wyk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv45d"]
+atlas = ExtResource("1_i2wyk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k5rc"]
+atlas = ExtResource("1_i2wyk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypt5o"]
+atlas = ExtResource("1_i2wyk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lqmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8ygp")
+}],
+"loop": true,
+"name": &"chasing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8ygp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dmve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7hxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv45d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k5rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypt5o")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}]
+
+[node name="Dragon" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -15, 10, -15, 10, 17, -16, 17)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7lqmn")
+animation = &"killing"
+frame = 5
+frame_progress = 0.0876774
