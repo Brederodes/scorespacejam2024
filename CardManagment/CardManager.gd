@@ -10,6 +10,12 @@ var Probability:Dictionary = {ABILITY_TYPES.JUMP : 4,
 							  ABILITY_TYPES.WATER : 1}
 							#Total = 12 pls update if changing rarites
 var TotalWeight:int = 12;
+var JumpCardScene = load("res://CardManagment/Abilites/jump_card.tscn")
+var DashCardScene = load("res://CardManagment/Abilites/dash_card.tscn")
+var GrappleCardScene = load("res://CardManagment/Abilites/grapple_card.tscn")
+var GravityCardScene = load("res://CardManagment/Abilites/gravity_card.tscn")
+var WaterCardScene = load("res://CardManagment/Abilites/water_card.tscn")
+
 var Cooldown:float = 0; #start testing at 0
 
 var HandState:Dictionary = {0: false,
@@ -40,18 +46,20 @@ func Random_Ability() -> int:
 	
 func Create_Random_Card()-> Card:
 	var newCard_Ability:int = Random_Ability();
+	var newCard;
 	match newCard_Ability:
 		ABILITY_TYPES.JUMP:
-			return JumpCard.new();
+			newCard = JumpCardScene.instantiate();
 		ABILITY_TYPES.DASH:
-			return DashCard.new();
+			newCard = DashCardScene.instantiate();
 		ABILITY_TYPES.GRAPPLE:
-			return GrappleCard.new();
+			newCard = GrappleCardScene.instantiate();
 		ABILITY_TYPES.GRAVITY:
-			return GravityCard.new();
+			newCard = GravityCardScene.instantiate();
 		ABILITY_TYPES.WATER:
-			return WaterCard.new();
-	return
+			newCard = WaterCardScene.instantiate();
+	add_child(newCard);
+	return newCard;
 	
 func Draw_new_card(slot: int) -> void:
 	var newCard:Card = Create_Random_Card();
@@ -59,18 +67,23 @@ func Draw_new_card(slot: int) -> void:
 	newCard.isReady = false;
 	$Timer.connect("timeout",newCard.makeReady);
 	$Timer.start(Cooldown);
+	newCard.position = Vector2(100 + slot * 32, 100)
+	add_child(newCard)
 	HandState[slot] = true;
 	pass
 
 func Delete_card(card: Card) -> void:
+	card.queue_free()
 	HandState[card.Slot] = false;
 	pass
 
-func Change_card(card: Card) -> void:
+func Use_card(card: Card) -> void:
+	var freedSlot = card.Slot;
+	card.doAbility();
 	Delete_card(card);
-	Draw_new_card(card.slot);
+	Draw_new_card(freedSlot);
 	pass
 
 func _on_card_card_used(card: Card) -> void:
-	Change_card(card);
+	Use_card(card);
 	pass

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bksgci3frsuss"]
+
+[ext_resource type="PackedScene" uid="uid://dwtb7wj68k41l" path="res://CardManagment/Abilites/basic_card.tscn" id="1_1gng4"]
+[ext_resource type="Script" path="res://CardManagment/Abilites/GrappleCard.gd" id="1_oy26q"]
+
+[node name="GrappleCard" instance=ExtResource("1_1gng4")]
+script = ExtResource("1_oy26q")
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 2

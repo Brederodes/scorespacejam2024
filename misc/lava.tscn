@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://comu3cm1obf6o"]
+
+[ext_resource type="Texture2D" uid="uid://bl2qyqy6l4xwd" path="res://assets/lava-sheet.png" id="1_ei0st"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycaya"]
+atlas = ExtResource("1_ei0st")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phucs"]
+atlas = ExtResource("1_ei0st")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hha7d"]
+atlas = ExtResource("1_ei0st")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn1wi"]
+atlas = ExtResource("1_ei0st")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v17m"]
+atlas = ExtResource("1_ei0st")
+region = Rect2(256, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf0y1"]
+atlas = ExtResource("1_ei0st")
+region = Rect2(320, 0, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hglk3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycaya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phucs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hha7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn1wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v17m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf0y1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d82xl"]
+size = Vector2(64, 32)
+
+[node name="Lava" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hglk3")
+frame = 3
+frame_progress = 0.864963
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_d82xl")
