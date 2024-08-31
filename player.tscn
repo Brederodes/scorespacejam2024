@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://yk2n6gs5xu34"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_bi665"]
+[ext_resource type="SpriteFrames" uid="uid://d1y1f811ojh15" path="res://assets/character.tres" id="1_uqwho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ug5ir"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_bi665")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_ug5ir")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = ExtResource("1_uqwho")
+animation = &"running"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgdmmaoj67mv3"]
+
+[ext_resource type="PackedScene" uid="uid://b71fmmgpgpsju" path="res://platforms/platform7.tscn" id="1_sek26"]
+
+[node name="Platform6" instance=ExtResource("1_sek26")]
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(13, 90, 87, 18, 100, 18, 99, 90)

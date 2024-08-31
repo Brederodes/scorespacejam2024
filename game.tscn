@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://ggqvatbve8xk"]
+
+[ext_resource type="PackedScene" uid="uid://iqvovrlv8afl" path="res://platforms/platform1.tscn" id="1_6oq40"]
+[ext_resource type="PackedScene" uid="uid://yk2n6gs5xu34" path="res://player.tscn" id="1_713ts"]
+[ext_resource type="PackedScene" uid="uid://dl8iuejxdmd66" path="res://platforms/platform3.tscn" id="3_50r8b"]
+[ext_resource type="PackedScene" uid="uid://bcgp5ox1t5i1e" path="res://platforms/platform4.tscn" id="4_niiu3"]
+[ext_resource type="PackedScene" uid="uid://dl28vgifk7k4d" path="res://platforms/platform5.tscn" id="5_ubnbc"]
+[ext_resource type="PackedScene" uid="uid://d4d0pr7b685hm" path="res://platforms/platform2.tscn" id="6_ramv8"]
+[ext_resource type="PackedScene" uid="uid://cms6pf668lc5" path="res://platforms/platform0.tscn" id="7_vbdck"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." instance=ExtResource("1_713ts")]
+
+[node name="Platform" parent="." instance=ExtResource("1_6oq40")]
+
+[node name="Platform2" parent="." instance=ExtResource("3_50r8b")]
+position = Vector2(165, -33)
+
+[node name="Platform4" parent="." instance=ExtResource("4_niiu3")]
+position = Vector2(84, -89)
+
+[node name="Platform5" parent="." instance=ExtResource("5_ubnbc")]
+position = Vector2(266, 22)
+
+[node name="Platform3" parent="." instance=ExtResource("6_ramv8")]
+position = Vector2(249, -148)
+
+[node name="Platform0" parent="." instance=ExtResource("7_vbdck")]
+position = Vector2(393, -68)

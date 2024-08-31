@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcgp5ox1t5i1e"]
+
+[ext_resource type="Texture2D" uid="uid://dqb2xj5o0ydn6" path="res://assets/tileset_lava-sheet.png" id="1_d4227"]
+
+[node name="Platform4" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_d4227")
+centered = false
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+texture_filter = 1
+polygon = PackedVector2Array(23, 57, 7, 57, 11, 63, 19, 63)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+texture_filter = 1
+polygon = PackedVector2Array(105, 57, 89, 57, 94, 64, 101, 64)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+texture_filter = 1
+polygon = PackedVector2Array(64, 57, 48, 57, 53, 64, 60, 64)
