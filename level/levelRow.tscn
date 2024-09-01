@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvy3wsasgrm05"]
+
+[ext_resource type="Script" path="res://level/levelRow.gd" id="1_nlgyl"]
+
+[node name="LevelRow" type="Node2D"]
+script = ExtResource("1_nlgyl")
+platform_size = 112.0
+separation_between_tiles = 80.0

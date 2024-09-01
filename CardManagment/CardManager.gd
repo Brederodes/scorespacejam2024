@@ -80,7 +80,6 @@ func Draw_new_card(slot: int) -> void:
 	$Timer.connect("timeout",newCard.makeReady);
 	$Timer.start(Cooldown);
 	newCard.position = Vector2(100 + slot * 32, 100)
-	add_child(newCard)
 	HandState[slot] = true;
 	pass
 

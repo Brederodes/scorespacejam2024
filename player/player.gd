@@ -10,36 +10,55 @@ class_name Player extends CharacterBody2D
 @export var playerMaxRunningSpeed : float = 5;
 @export var playerAcceleration : float = 1;
 @export var current_state : PLAYER_STATES = PLAYER_STATES.FALLING;
+var last_frame_real_velocity : Vector2 = Vector2();
+var last_frame_position : Vector2 = Vector2();
 enum PLAYER_STATES
 {
 	RUNNING,
 	FALLING,
 	CASTING_ABILITY,
 }
-func changed_state() -> bool:
+func update_current_state() -> bool:
+	var is_touching_floor : bool = is_on_floor();
+	match current_state:
+		PLAYER_STATES.RUNNING:
+			if(!is_touching_floor):
+				current_state = PLAYER_STATES.FALLING;
+				#resolving slopes quirkiness
+				velocity = last_frame_real_velocity;
+				position = last_frame_position;
+				move_and_slide()
+				return true;
+		PLAYER_STATES.FALLING:
+			if(is_touching_floor):
+				current_state = PLAYER_STATES.RUNNING;
+				return true;
 	return false;
 
 func apply_running_acceleration(delta : float) -> void:
-	var realVelocity = get_real_velocity();
-	#if(get_floor_normal().x > cos(0.7)):
-	#	velocity = realVelocity;
 	if(velocity.x > playerMaxRunningSpeed):
 		velocity.x -= playerDeceleration * delta;
 	if(velocity.x < playerMaxRunningSpeed):
-		velocity.x += playerAcceleration * delta;
+		velocity.x = clamp(velocity.x + playerAcceleration * delta, velocity.x, playerMaxRunningSpeed);
+	print("RUN velocity: ",velocity);
+	print("RUN real_spd:", get_real_velocity());
 	pass
 func apply_falling_acceleration(delta : float) -> void:
-	var realVelocity = get_real_velocity();
-	if(realVelocity.y > playerMaxFallingSpeed):
+	if(velocity.y > playerMaxFallingSpeed):
 		velocity.y -= playerDeceleration * delta;
+		print("FAL velocity: ",velocity);
+		print("FAL real_spd:", get_real_velocity());
 		return;
 	else:
-		velocity.y += playerGravityAcceleration * delta;
+		velocity.y = clamp(velocity.y + playerGravityAcceleration * delta,
+		velocity.y,
+		playerMaxFallingSpeed);
+		print("FAL velocity: ",velocity);
+		print("FAL real_spd:", get_real_velocity());
 	pass
 func act_according_to_ability():
 	pass
 func _physics_process(delta):
-	var number_of_changes : int = 0;
 	match current_state:
 		PLAYER_STATES.RUNNING:
 			apply_running_acceleration(delta);
@@ -47,11 +66,13 @@ func _physics_process(delta):
 			apply_falling_acceleration(delta);
 		PLAYER_STATES.CASTING_ABILITY:
 			act_according_to_ability();
+	last_frame_real_velocity = get_real_velocity();
+	last_frame_position = position;
 	move_and_slide();
+	while update_current_state():
+		continue
 	pass
 func _ready():
-	$FloorDetector.connect("turned_airborne", react_to_airborn);
-	$FloorDetector.connect("turned_grounded", react_to_grounded);
 	playerAcceleration = initialPlayerAcceleration;
 	playerMaxRunningSpeed = initialPlayerMaxRunningSpeed;
 
@@ -62,6 +83,7 @@ func react_to_airborn():
 	if(current_state == PLAYER_STATES.CASTING_ABILITY):
 		return
 	current_state = PLAYER_STATES.FALLING;
+	velocity.y = get_real_velocity().y;
 	pass
 func react_to_ended_ability():
 	pass
