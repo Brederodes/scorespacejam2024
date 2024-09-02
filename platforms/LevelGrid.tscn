@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6wh0mlnxtm16"]
+
+[ext_resource type="PackedScene" uid="uid://dvy3wsasgrm05" path="res://level/levelRow.tscn" id="1_k65vh"]
+
+[node name="LevelGrid" type="Node2D"]
+
+[node name="LevelRow" parent="." instance=ExtResource("1_k65vh")]
+position = Vector2(0, 224)
+
+[node name="LevelRow2" parent="." instance=ExtResource("1_k65vh")]
+position = Vector2(96, 112)
+
+[node name="LevelRow3" parent="." instance=ExtResource("1_k65vh")]
+
+[node name="LevelRow4" parent="." instance=ExtResource("1_k65vh")]
+position = Vector2(96, -112)
+
+[node name="LevelRow5" parent="." instance=ExtResource("1_k65vh")]
+position = Vector2(0, -224)

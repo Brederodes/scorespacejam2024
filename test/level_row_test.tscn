@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3mr34myedb74"]
+[gd_scene load_steps=2 format=3 uid="uid://b3mr34myedb74"]
 
 [ext_resource type="PackedScene" uid="uid://dvy3wsasgrm05" path="res://level/levelRow.tscn" id="1_c2pw1"]
-[ext_resource type="PackedScene" uid="uid://cms6pf668lc5" path="res://platforms/platform0.tscn" id="2_0uq2h"]
 
 [node name="LevelRowTest" type="Node2D"]
 
@@ -9,17 +8,20 @@
 zoom = Vector2(0.5, 0.5)
 
 [node name="LevelRow" parent="." instance=ExtResource("1_c2pw1")]
-position = Vector2(56, 0)
+position = Vector2(0, 224)
 row_platforms_count = 5
 
 [node name="LevelRow2" parent="." instance=ExtResource("1_c2pw1")]
-position = Vector2(0, 128)
+position = Vector2(96, 112)
 row_platforms_count = 5
 
 [node name="LevelRow3" parent="." instance=ExtResource("1_c2pw1")]
-position = Vector2(0, -128)
 row_platforms_count = 5
 
-[node name="Platform0" parent="." instance=ExtResource("2_0uq2h")]
-position = Vector2(-214, -635)
-scale = Vector2(3.69, 3.69)
+[node name="LevelRow4" parent="." instance=ExtResource("1_c2pw1")]
+position = Vector2(96, -112)
+row_platforms_count = 5
+
+[node name="LevelRow5" parent="." instance=ExtResource("1_c2pw1")]
+position = Vector2(0, -224)
+row_platforms_count = 5

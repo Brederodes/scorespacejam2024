@@ -6,3 +6,4 @@
 script = ExtResource("1_nlgyl")
 platform_size = 112.0
 separation_between_tiles = 80.0
+row_platforms_count = 20

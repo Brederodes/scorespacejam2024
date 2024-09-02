@@ -15,4 +15,4 @@ vframes = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 texture_filter = 1
-polygon = PackedVector2Array(16, 32, 32, 16, 80, 16, 96, 32, 96, 64, 64, 96, 48, 96, 16, 64)
+polygon = PackedVector2Array(16, 29, 32, 16, 80, 16, 96, 29, 96, 64, 64, 96, 48, 96, 16, 64)

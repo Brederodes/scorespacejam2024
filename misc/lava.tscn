@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://comu3cm1obf6o"]
+[gd_scene load_steps=11 format=3 uid="uid://de44tgi7adfbf"]
 
 [ext_resource type="Texture2D" uid="uid://bl2qyqy6l4xwd" path="res://assets/lava-sheet.png" id="1_ei0st"]
+[ext_resource type="Script" path="res://level/trap.gd" id="2_h7py6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycaya"]
 atlas = ExtResource("1_ei0st")
@@ -53,15 +54,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d82xl"]
-size = Vector2(64, 32)
+size = Vector2(128, 64)
 
-[node name="Lava" type="StaticBody2D"]
+[node name="Lava" type="Area2D"]
+collision_layer = 0
+script = ExtResource("2_h7py6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hglk3")
-frame = 3
-frame_progress = 0.864963
+autoplay = "default"
+frame_progress = 0.591652
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

@@ -5,6 +5,7 @@
 
 [node name="DashCard" instance=ExtResource("1_abxsf")]
 script = ExtResource("1_2ksw4")
+dash_speed = 100.0
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 1

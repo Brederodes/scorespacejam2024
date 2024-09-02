@@ -5,3 +5,4 @@
 
 [node name="JumpCard" instance=ExtResource("1_0v87b")]
 script = ExtResource("1_jivlm")
+jump_speed = 200.0

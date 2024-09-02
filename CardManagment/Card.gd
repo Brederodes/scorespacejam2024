@@ -1,29 +1,22 @@
 class_name Card extends Node2D
 
-signal card_used(card: Card);
-@export var use_button: Button;
+var is_ready : bool = false;
+@export var card_timer : Timer;
 
-@export var Slot:int = 0; #slots {0, 1, 2} on the hand
-var isReady:bool = true;
- 
+var player : Player;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	use_button.connect("pressed",getUsed);
 	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-func getUsed():
-	get_parent().Use_card(self);
-	return
 
-func makeReady() -> void:
-	self.isReady == true
+func start_ready_timer(cooldown : float) -> void:
+	card_timer.one_shot = true;
+	card_timer.connect("timeout", _make_card_ready);
+	card_timer.start(cooldown);
 	pass
-	
-func doAbility() -> void:
-	card_used.emit(self);
+func _make_card_ready():
+	is_ready = true;
+func do_ability() -> void:
 	pass;

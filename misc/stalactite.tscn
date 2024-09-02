@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3gh54igvudkb"]
+[gd_scene load_steps=4 format=3 uid="uid://chmiprum6fql4"]
 
 [ext_resource type="Texture2D" uid="uid://r53k32mf80b5" path="res://assets/estalactite.png" id="1_uuf5v"]
+[ext_resource type="Script" path="res://level/trap.gd" id="1_ylqtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1rgw"]
-size = Vector2(64, 11)
+size = Vector2(192, 128)
 
-[node name="Estalactite" type="StaticBody2D"]
+[node name="Stalactite" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_ylqtm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -14.5)
+position = Vector2(0, -25.63)
 shape = SubResource("RectangleShape2D_x1rgw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2, 4)
 texture = ExtResource("1_uuf5v")

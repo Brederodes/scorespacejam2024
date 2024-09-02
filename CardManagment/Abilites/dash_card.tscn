@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://xblrrgqpkdut"]
-
-[ext_resource type="Script" path="res://CardManagment/Abilites/DashCard.gd" id="1_2ksw4"]
-
-[node name="DashCard"]
-script = ExtResource("1_2ksw4")
-
-[node name="Sprite2D" parent="." index="0"]
-frame = 1

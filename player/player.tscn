@@ -1,27 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://yk2n6gs5xu34"]
+[gd_scene load_steps=4 format=3 uid="uid://yk2n6gs5xu34"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_bi665"]
 [ext_resource type="SpriteFrames" uid="uid://d1y1f811ojh15" path="res://assets/character.tres" id="1_uqwho"]
-[ext_resource type="Script" path="res://player/FloorDetector.gd" id="3_3gtw3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug5ir"]
 radius = 8.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_uri4b"]
-a = Vector2(0, -9)
-b = Vector2(0, 14)
-
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 collision_mask = 15
 floor_constant_speed = true
 floor_max_angle = 1.0472
-floor_snap_length = 10.0
-platform_floor_layers = 4294901762
+platform_floor_layers = 4278190082
 script = ExtResource("1_bi665")
-initialPlayerMaxRunningSpeed = 2000.0
-playerMaxFallingSpeed = 500.0
-playerDeceleration = 100.0
-initialPlayerAcceleration = 300.0
+initialPlayerMaxRunningSpeed = 80.0
+playerMaxFallingSpeed = 300.0
+playerDeceleration = 20.0
+initialPlayerAcceleration = 70.0
 playerGravityAcceleration = 100.0
 playerMaxRunningSpeed = 100.0
 playerAcceleration = 15.0
@@ -36,11 +31,3 @@ position = Vector2(0, -8)
 sprite_frames = ExtResource("1_uqwho")
 animation = &"running"
 autoplay = "running"
-
-[node name="FloorDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_3gtw3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
-shape = SubResource("SegmentShape2D_uri4b")

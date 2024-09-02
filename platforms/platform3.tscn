@@ -17,7 +17,7 @@ frame = 3
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 texture_filter = 1
-polygon = PackedVector2Array(33, 4, 33, -31, 80, -31, 80, 4, 57, 11)
+polygon = PackedVector2Array(37, 0, 33, -31, 80, -31, 77, 0, 57, 11)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 texture_filter = 1

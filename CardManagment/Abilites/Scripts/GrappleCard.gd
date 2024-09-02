@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func doAbility() -> void:
+func do_ability() -> void:
 	print("grapplei");
 	super();
 	pass;

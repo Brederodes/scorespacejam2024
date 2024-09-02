@@ -35,7 +35,7 @@ func roll_row_by(roll_amount : int):
 	for n in roll_amount:
 		var new_platform = level_platform_scenes[rng.randi_range(0,7)].instantiate();
 		current_level_platforms.append(new_platform);
-		add_child(new_platform);
+		call_deferred("add_child", new_platform);
 		new_platform.position.x = (n + row_platforms_count - roll_amount) * (platform_size + separation_between_tiles);
 
 	print(current_level_platforms.size());
@@ -43,7 +43,3 @@ func roll_row_by(roll_amount : int):
 func _ready():
 	load_platform_scenes_variable();
 	randomize_all_blocks();
-
-func _input(event):
-	if(event.is_action_released("ui_up")):
-		roll_row_by(1);

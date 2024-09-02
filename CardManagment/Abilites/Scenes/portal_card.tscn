@@ -5,6 +5,7 @@
 
 [node name="PortalCard" instance=ExtResource("1_t2na0")]
 script = ExtResource("2_km6g1")
+dash_distance = 100.0
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 2

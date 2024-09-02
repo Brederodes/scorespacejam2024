@@ -1,6 +1,8 @@
-class_name CardManager extends Node2D
+class_name CardManager extends Control
 
-
+@export var player : Player;
+@export_category("iteration values")
+@export var card_cooldown: float;
 enum ABILITY_TYPES {JUMP, DASH, PORTAL, GRAPPLE, CARPET, SHIELD, GRAVITY, WATER};
 #4 = Common, 2 = Uncommon, 1 = Rare
 var Probability:Dictionary = {ABILITY_TYPES.JUMP : 4,
@@ -24,12 +26,16 @@ var WaterCardScene = load("res://CardManagment/Abilites/Scenes/water_card.tscn")
 
 var Cooldown:float = 0; #start testing at 0
 
-var HandState:Dictionary = {0: false,
-							1: false,
-							2: false}# true if there is a card in that slot false otherwise
+var hand_cards : Array = Array();
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hand_cards.append(null);
+	hand_cards.append(null);
+	hand_cards.append(null);
+	draw_new_card(0);
+	draw_new_card(1);
+	draw_new_card(2);
 	pass # Replace with function body.
 
 
@@ -37,7 +43,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func Random_Ability() -> int:
+func random_ability() -> int:
 	randomize()
 	var random_value: int = randi_range(0, TotalWeight - 1);
 	var cumulative_weight: int = 0;
@@ -50,8 +56,8 @@ func Random_Ability() -> int:
 	print("Ajeita o TotalWeight nerd");
 	return -1
 	
-func Create_Random_Card()-> Card:
-	var newCard_Ability:int = Random_Ability();
+func create_random_card()-> Card:
+	var newCard_Ability:int = random_ability();
 	var newCard : Card;
 	match newCard_Ability:
 		ABILITY_TYPES.JUMP:
@@ -71,30 +77,34 @@ func Create_Random_Card()-> Card:
 		ABILITY_TYPES.WATER:
 			newCard = WaterCardScene.instantiate();
 	add_child(newCard);
+	newCard.player = player;
 	return newCard;
 	
-func Draw_new_card(slot: int) -> void:
-	var newCard:Card = Create_Random_Card();
-	newCard.Slot = slot;
-	newCard.isReady = false;
-	$Timer.connect("timeout",newCard.makeReady);
-	$Timer.start(Cooldown);
-	newCard.position = Vector2(100 + slot * 32, 100)
-	HandState[slot] = true;
+func draw_new_card(slot: int) -> void:
+	var newCard:Card = create_random_card();
+	newCard.is_ready = false;
+	newCard.start_ready_timer(card_cooldown);
+	newCard.position = Vector2(slot * 32 - 32, 100)
+	hand_cards[slot] = newCard;
 	pass
 
-func Delete_card(card: Card) -> void:
-	card.queue_free()
-	HandState[card.Slot] = false;
+func delete_card_in_slot(slot:int) -> void:
+	hand_cards[slot].queue_free();;
+	hand_cards[slot] = null;
 	pass
 
-func Use_card(card: Card) -> void:
-	var freedSlot = card.Slot;
-	card.doAbility();
-	Delete_card(card);
-	Draw_new_card(freedSlot);
+func use_card_in_slot(slot : int) -> void:
+	var used_card : Card = hand_cards[slot];
+	if(! used_card.is_ready):
+		return;
+	used_card.do_ability();
+	delete_card_in_slot(slot);
+	draw_new_card(slot);
 	pass
-
-func _on_card_card_used(card: Card) -> void:
-	Use_card(card);
-	pass
+func _input(event):
+	if(event.is_action_pressed("ui_left")):
+		use_card_in_slot(0);
+	if(event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
+		use_card_in_slot(1);
+	if(event.is_action_pressed("ui_right")):
+		use_card_in_slot(2);
